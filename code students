@@ -1,0 +1,103 @@
+tudents = []
+
+# register students
+
+def register_students():
+    id_est = input("enter Id ")
+    name = input("enter name ")
+    age = int(input("enter age "))
+    course = input("enter course ")
+    state = input("enter state(asset/idle): ")
+
+    student = {
+     "id": id_est,
+     "name": name,
+     "age": age,
+     "course": course,
+     "state": state,
+}
+
+    students.append(student)
+    print("student successfully registered\n")
+
+
+# show all students
+def show_students():
+    global students
+    if not students:
+        print("There are no registered students.")
+        return   
+    for est in students:
+        print(est)
+
+
+# search for students
+def search_students():
+    search = input("search by ID or name ")
+
+    for est in students:
+        if est["id"] == search or est["nombre"].lower() == search.lower():
+            print("student found:")
+            print(est)
+            return
+    
+print("student not found")
+
+# update student
+def update_students():
+    id_est = input("Enter the student ID to update: ")
+
+    for est in students:
+        if  est["id"] == id_est:
+            est["name"] = input("new name: ")
+            est["age"] = int(input("new age: "))
+            est["course"] = input("new course: ")
+            est["state"] = input("new state: ")
+            print("updated student\n")
+            return
+
+print("student not found\n")
+
+# remove student
+def remove_students():
+    id_est = input("Enter the ID of the student to be deleted: ")
+    for est in students: 
+        if est["id"] == id_est:
+            students.remove(est)
+            print("student removed\n")
+            return
+
+print("student not found\n")
+
+
+# main menu
+def menu():
+    while True:
+        print("====MENU====")
+        print("1. Register students")
+        print("2. Show students")
+        print("3. Search student")
+        print("4. Update student")
+        print("5. Delete student")
+        print("6. log out")
+
+        opcion = input("select an option: ")
+
+        if opcion == "1":
+            register_students()
+        elif opcion == "2":
+            show_students()
+        elif opcion == "3":
+            search_students()
+        elif opcion == "4":
+            update_students()
+        elif opcion == "5":
+            remove_students()
+        elif opcion == "6":
+            print("exiting the system...")
+            break 
+        else:
+            print("This option is not available.")
+
+
+menu()
